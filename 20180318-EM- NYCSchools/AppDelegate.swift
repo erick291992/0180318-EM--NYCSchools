@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import GooglePlaces
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +17,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.makeKeyAndVisible()
+        
+        if let window = self.window{
+            window.rootViewController = UINavigationController(rootViewController: SchoolTableViewController())
+        }
+        
+        // providing google places api key
+        GMSPlacesClient.provideAPIKey(Key.googlePlaces)
+        
+        // Setup status bar style. modified info.plist with View controller-based status bar appearance = NO
+//        UIApplication.shared.statusBarStyle = .lightContent
+        // get rid of black bar underneath navigation bar
+//        UINavigationBar.appearance().shadowImage = UIImage()
+//        UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
+        // Setup Navigation Bar colors
+//        UINavigationBar.appearance().barTintColor = .red
+//        UINavigationBar.appearance().tintColor = .white
+//        UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
+        UINavigationBar.appearance().isTranslucent = false
         return true
     }
 
